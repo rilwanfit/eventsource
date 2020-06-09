@@ -1,0 +1,10 @@
+{
+    "name": "rilwanmohamedhanifa/event-source-php",
+    "authors": [
+        {
+            "name": "MH Rilwan",
+            "email": "rilwanfit@gmail.com"
+        }
+    ],
+    "require": {}
+}

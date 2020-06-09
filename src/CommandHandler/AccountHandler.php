@@ -5,11 +5,21 @@ declare(strict_types=1);
 namespace Mhr\EventSourcePhp\CommandHandler;
 
 use Mhr\EventSourcePhp\Command\AccountWasCreated;
+use Mhr\EventSourcePhp\Domain\Account\Account;
+use Mhr\EventSourcePhp\Repository\AccountRepository;
 
 class AccountHandler
 {
-    public function __invoke(AccountWasCreated $account)
+    private AccountRepository $accountRepository;
+
+    public function __construct(AccountRepository $accountRepository)
     {
-        die(get_class($account));
+        $this->accountRepository = $accountRepository;
+    }
+
+    public function __invoke(AccountWasCreated $command)
+    {
+        $account = Account::create();
+        $this->accountRepository->save($account);
     }
 }

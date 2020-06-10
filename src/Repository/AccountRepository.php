@@ -25,17 +25,7 @@ class AccountRepository
     {
         $domainEventStream = $aggregateRoot->uncommittedEvents();
 
-        $this->eventStore->append('123', [
-            [
-                'playhead' => $domainEventStream[0]['playhead'],
-                'metadata' => '{}',
-                'payload' => '{}',
-                'recorded_on' => '',
-                'type' => 'type',
-            ]
-        ]);
-
-
+        $this->eventStore->append('123', $domainEventStream);
 
         $this->eventBus->dispatch(new AccountWasCreatedEvent());
     }

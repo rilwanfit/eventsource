@@ -8,7 +8,7 @@ use Mhr\EventSourcePhp\Command\CreateAccountCommand;
 use Mhr\EventSourcePhp\Domain\Account\Account;
 use Mhr\EventSourcePhp\Repository\AccountRepository;
 
-class AccountHandler
+class CreateAccountCommandHandler
 {
     private AccountRepository $accountRepository;
 

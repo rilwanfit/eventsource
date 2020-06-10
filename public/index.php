@@ -27,7 +27,7 @@ $eventBus = new \Symfony\Component\Messenger\MessageBus([
 
 $accountRepository = new AccountRepository($dbalEventStore, $eventBus);
 
-$handler = new \Mhr\EventSourcePhp\CommandHandler\AccountHandler($accountRepository);
+$handler = new \Mhr\EventSourcePhp\CommandHandler\CreateAccountCommandHandler($accountRepository);
 
 $commandBus = new \Symfony\Component\Messenger\MessageBus([
     new HandleMessageMiddleware(new HandlersLocator([

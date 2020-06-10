@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Mhr\EventSourcePhp\Domain;
 
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+
 class EventSourcedAggregateRoot implements AggregateRoot
 {
     private array $uncommittedEvents = [];
@@ -20,10 +24,19 @@ class EventSourcedAggregateRoot implements AggregateRoot
     public function apply($event): void
     {
         ++$this->playhead;
+
+        $encoders = [new JsonEncoder()];
+        $normalizers = [new ObjectNormalizer()];
+
+        $serializer = new Serializer($normalizers, $encoders);
+
+
         $this->uncommittedEvents[] = [
-            'aggregateRootId' => $this->aggregateRootId(),
             'playhead' => $this->playhead,
-            'event' => $event
+            'metadata' => '{}',
+            'payload' => $serializer->serialize($event, 'json'),
+            'recorded_on' => '',
+            'type' => 'type',
         ];
     }
 }

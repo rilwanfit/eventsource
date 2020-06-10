@@ -14,5 +14,9 @@
     "require": {
         "doctrine/dbal": "^2.10",
         "symfony/messenger": "^5.1"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.0",
+        "filp/whoops": "^2.7"
     }
 }

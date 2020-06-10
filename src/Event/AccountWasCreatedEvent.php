@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mhr\EventSourcePhp\Command;
+namespace Mhr\EventSourcePhp\Event;
 
-class AccountWasCreated
+class AccountWasCreatedEvent
 {
     public string $id = '123';
 }

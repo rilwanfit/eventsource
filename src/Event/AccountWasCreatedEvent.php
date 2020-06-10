@@ -4,7 +4,15 @@ declare(strict_types=1);
 
 namespace Mhr\EventSourcePhp\Event;
 
-class AccountWasCreatedEvent
+final class AccountWasCreatedEvent extends Event
 {
     public string $id = '123';
+
+    public function payload(): array
+    {
+        return [
+            'id' => $this->id,
+            'date' => $this->date()
+        ];
+    }
 }

@@ -27,4 +27,9 @@ class Account extends EventSourcedAggregateRoot
     {
         return (string) $this->id;
     }
+
+    public static function instantiateForReconstitution(): self
+    {
+        return new static();
+    }
 }

@@ -21,9 +21,9 @@ class EventSourcedAggregateRoot implements AggregateRoot
     {
         ++$this->playhead;
         $this->uncommittedEvents[] = [
-            $this->aggregateRootId(),
-            $this->playhead,
-            $event
+            'aggregateRootId' => $this->aggregateRootId(),
+            'playhead' => $this->playhead,
+            'event' => $event
         ];
     }
 }

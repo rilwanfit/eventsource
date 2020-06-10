@@ -71,14 +71,6 @@ class DBALEventStore implements EventStore
 
     private function insertMessage(Connection $connection, $domainMessage)
     {
-        $data = [
-            'playhead' => [],
-            'metadata' => json_encode([]),
-            'payload' => json_encode([]),
-            'recorded_on' => '',
-            'type' => 'type',
-        ];
-
-        $connection->insert($this->tableName, $data);
+        $connection->insert($this->tableName, $domainMessage);
     }
 }

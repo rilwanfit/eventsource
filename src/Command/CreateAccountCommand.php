@@ -9,5 +9,10 @@ namespace Mhr\EventSourcePhp\Command;
  */
 class CreateAccountCommand
 {
-    public string $id = '123';
+    public string $id;
+
+    public function __construct(string $id)
+    {
+        $this->id = $id;
+    }
 }

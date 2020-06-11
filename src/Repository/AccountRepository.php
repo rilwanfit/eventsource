@@ -28,13 +28,13 @@ class AccountRepository
         $this->aggregateFactory = $aggregateFactory;
     }
 
-    public function save(AggregateRoot $aggregateRoot)
+    public function save(AggregateRoot $aggregateRoot, $command)
     {
         $domainEventStream = $aggregateRoot->uncommittedEvents();
 
-        $this->eventStore->append('123', $domainEventStream);
+        $this->eventStore->append($aggregateRoot->aggregateRootId(), $domainEventStream);
 
-        $this->eventBus->dispatch(new AccountWasCreatedEvent());
+        $this->eventBus->dispatch(new AccountWasCreatedEvent($aggregateRoot->aggregateRootId()));
     }
 
     public function findById(string $id): Account

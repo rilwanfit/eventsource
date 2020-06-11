@@ -12,22 +12,22 @@ class Account extends EventSourcedAggregateRoot
 {
     private $id;
 
-    public static function create()
+    public static function create(string $id)
     {
         $account =  new self();
-        $account->id = '123';
+        $account->id = $id;
 
         $account->apply(
-            new AccountWasCreatedEvent()
+            new AccountWasCreatedEvent($id)
         );
 
         return $account;
     }
 
-    public function deposit()
+    public function deposit(string $id, string $amount)
     {
         $this->apply(
-            new AmountWasDepositedEvent()
+            new AmountWasDepositedEvent($id, $amount)
         );
     }
 

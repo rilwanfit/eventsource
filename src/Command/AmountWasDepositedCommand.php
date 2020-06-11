@@ -6,6 +6,12 @@ namespace Mhr\EventSourcePhp\Command;
 
 class AmountWasDepositedCommand
 {
-    public string $id = '123';
-    public string $amount = '200';
+    public string $id;
+    public string $amount;
+
+    public function __construct(string $id, string $amount)
+    {
+        $this->id = $id;
+        $this->amount = $amount;
+    }
 }

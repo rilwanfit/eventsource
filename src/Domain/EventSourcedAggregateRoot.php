@@ -44,7 +44,7 @@ class EventSourcedAggregateRoot implements AggregateRoot
             'playhead' => $this->playhead,
             'uuid' => $event->id,
             'metadata' => '{}',
-            'payload' => $serializer->serialize($event, 'json'),
+            'payload' => $serializer->serialize($event->payload(), 'json'),
             'recorded_on' => '',
             'type' => get_class($event),
         ];

@@ -6,15 +6,24 @@ namespace Mhr\EventSourcePhp\Event;
 
 final class AmountWasDepositedEvent extends Event
 {
-    public string $id = '123';
+    public string $id;
 
-    public string $amount = '200';
+    public string $amount;
+
+    public function __construct(string $id, string $amount)
+    {
+        $this->id = $id;
+        $this->amount = $amount;
+
+        parent::__construct();
+    }
 
     public function payload(): array
     {
         return [
             'id' => $this->id,
-            'amount' => $this->amount
+            'amount' => $this->amount,
+            'date' => $this->date()
         ];
     }
 }

@@ -44,6 +44,7 @@ $commandBus = new \Symfony\Component\Messenger\MessageBus([
     ])),
 ]);
 
-$commandBus->dispatch(new CreateAccountCommand(/* ... */));
-$commandBus->dispatch(new \Mhr\EventSourcePhp\Command\AmountWasDepositedCommand(/* ... */));
+$id = '1234';
+$commandBus->dispatch(new CreateAccountCommand($id));
+$commandBus->dispatch(new \Mhr\EventSourcePhp\Command\AmountWasDepositedCommand($id, '100'));
 

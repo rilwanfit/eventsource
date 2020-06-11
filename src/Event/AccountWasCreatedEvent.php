@@ -6,7 +6,14 @@ namespace Mhr\EventSourcePhp\Event;
 
 final class AccountWasCreatedEvent extends Event
 {
-    public string $id = '123';
+    public string $id;
+
+    public function __construct(string $id)
+    {
+        $this->id = $id;
+
+        parent::__construct();
+    }
 
     public function payload(): array
     {

@@ -19,8 +19,8 @@ class AmountWasDepositedCommandHandler
     public function __invoke(AmountWasDepositedCommand $command)
     {
         $account = $this->accountRepository->findById($command->id);
-        $account->deposit();
+        $account->deposit($command->id, $command->amount);
 
-        $this->accountRepository->save($account);
+        $this->accountRepository->save($account, $command->amount);
     }
 }

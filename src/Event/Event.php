@@ -10,7 +10,7 @@ abstract class Event
 {
     private DateTimeImmutable $datetime;
 
-    public function __construct()
+    protected function __construct()
     {
         $this->datetime = new DateTimeImmutable();
     }

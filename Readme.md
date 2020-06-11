@@ -21,6 +21,10 @@ the following calculation takes place:
 How we can get the balance? it could be done by replaying the events.
 
 ### Implementation
-1. Lets choose Doctrine to handle database layer
+
+### Projecting your events
+
+### Replaying event
+
 
 

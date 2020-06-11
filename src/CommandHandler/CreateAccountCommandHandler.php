@@ -19,7 +19,7 @@ class CreateAccountCommandHandler
 
     public function __invoke(CreateAccountCommand $command)
     {
-        $account = Account::create();
-        $this->accountRepository->save($account);
+        $account = Account::create($command->id);
+        $this->accountRepository->save($account, $command);
     }
 }

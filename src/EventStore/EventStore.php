@@ -6,5 +6,5 @@ namespace Mhr\EventSourcePhp\EventStore;
 
 interface EventStore
 {
-
+    public function load($id);
 }
